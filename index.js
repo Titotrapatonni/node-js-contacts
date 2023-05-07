@@ -1,4 +1,3 @@
-// const argv = require("yargs").argv;
 const { Command } = require("commander");
 const program = new Command();
 program
@@ -17,7 +16,7 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
     case "list":
       const list = await contacts.listContacts();
-      return console.log(list);
+      return console.table(list);
     case "get":
       const contact = await contacts.getContactById(id);
       return console.log(contact);
@@ -32,16 +31,3 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
   }
 };
 invokeAction(argv);
-
-console.log("====================================");
-console.log(process.argv);
-console.log("====================================");
-// invokeAction({ action: "list" });
-// invokeAction({ action: "get", id: "05olLMgyVQdWRwgKfg5J6" });
-// invokeAction({
-//   action: "add",
-//   name: "tito",
-//   email: "tito123@gmail.com",
-//   phone: "1231233",
-// });
-// invokeAction({ action: "remove", id: "xBnVHey9Y7E4WnfYQrxnm" });
